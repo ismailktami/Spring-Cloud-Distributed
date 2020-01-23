@@ -15,8 +15,9 @@ public class Bill {
     private Long customerId;
 
 
-
-    @Transient @OneToMany(mappedBy = "bill")
+    @Transient
+    private Customer customer;
+    @OneToMany(mappedBy = "bill")
     private Collection<ProductItem> productItems;
 
     public Bill(Date d,Long i,Collection<ProductItem> p){
@@ -55,5 +56,9 @@ public class Bill {
 
     public void setProductItems(Collection<ProductItem> productItems) {
         this.productItems = productItems;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

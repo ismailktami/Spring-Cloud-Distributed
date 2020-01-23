@@ -11,11 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RouteConfiguration {
 
-   // @Bean
     RouteLocator staticRoutes(RouteLocatorBuilder routeLocatorBuilder){
         return routeLocatorBuilder.routes()
-                .route(r->r.path("/customers/**").uri("lb://CUSTOMER_SERVICE").id("route1"))
-                .route(r->r.path("/products/**").uri("lb://INVENTORY_SERVICE").id("route2"))
+                .route(r->r.path("/google").uri("https://www.google.com").id("route1"))
+
                 .build();
     }
 

@@ -1,5 +1,7 @@
 package com.example.billingservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,11 +11,15 @@ public class ProductItem {
 
     private Long productId;
 
+    @Transient
+    //n'est pas persistent
+    private Product product;
     private double price;
 
     private double quantite;
 
     @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Bill bill;
 
 
@@ -56,5 +62,17 @@ public class ProductItem {
 
     public void setQuantite(double quantite) {
         this.quantite = quantite;
+    }
+
+    public double getQuantite() {
+        return quantite;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
